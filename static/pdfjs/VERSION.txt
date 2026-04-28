@@ -1,0 +1,23 @@
+v5.7.284
+
+このディレクトリの PDF.js は Mozilla 公式 prebuilt(pdfjs-5.7.284-dist.zip)を展開後、
+以下のファイルを「本番不要」として削除して軽量化したもの(展開直後 ~21MB → ~11MB)。
+
+削除済み:
+- build/pdf.mjs.map
+- build/pdf.sandbox.mjs.map
+- build/pdf.worker.mjs.map
+- web/viewer.mjs.map
+- web/debugger.css
+- web/debugger.mjs
+- web/compressed.tracemonkey-pldi-09.pdf  (static/pdfs/sample.pdf にコピー済み)
+
+ロケール絞り込み:
+- web/locale/ から ja/ と en-US/ 以外のサブディレクトリを削除
+- web/locale/locale.json を ja/en-us の 2 エントリのみに編集
+
+更新手順:
+1. https://github.com/mozilla/pdf.js/releases から最新の pdfjs-<version>-dist.zip を取得
+2. 既存 build/ web/ を一旦削除して上書き展開
+3. 上記の削除リストとロケール絞り込みを再適用
+4. 本ファイルのバージョン文字列を更新

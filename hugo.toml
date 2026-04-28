@@ -1,0 +1,28 @@
+baseURL = "https://oishimugicha.github.io/mugicha-blog/"
+languageCode = "ja"
+defaultContentLanguage = "ja"
+title = "むぎちゃの勉強ノート"
+theme = "PaperMod"
+enableRobotsTXT = true
+enableEmoji = true
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[params]
+  author = "mugicha"
+  description = "読書ノート・勉強ログ・その他諸々"
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowCodeCopyButtons = true
+  ShowToc = true
+  TocOpen = false
+  defaultTheme = "auto"
+
+  [params.homeInfoParams]
+    Title = "むぎちゃの勉強ノート"
+    Content = "読書ノート・勉強ログ・その他諸々"
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
