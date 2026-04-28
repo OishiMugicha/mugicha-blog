@@ -1,0 +1,16 @@
+{{- $src := .Get "src" -}}
+{{- $height := .Get "height" | default "800px" -}}
+{{- $title := .Get "title" | default "PDF viewer" -}}
+{{- $viewer := "/pdfjs/web/viewer.html" | absURL -}}
+{{- $file := $src | absURL -}}
+<div class="pdf-embed" style="margin: 1.5rem 0;">
+  <iframe
+    src="{{ $viewer }}?file={{ $file }}"
+    style="width: 100%; height: {{ $height }}; border: 0; border-radius: 6px;"
+    loading="lazy"
+    title="{{ $title }}"
+    allow="fullscreen"></iframe>
+  <p style="font-size: 0.85em; margin-top: 0.4em;">
+    <a href="{{ $file }}" target="_blank" rel="noopener">PDF を別タブで開く</a>
+  </p>
+</div>
