@@ -2,7 +2,7 @@ name: Deploy Hugo site to Pages
 
 on:
   push:
-    branches: [main]
+    branches: [bug/dart-sass-deployment-error]
   workflow_dispatch:
 
 permissions:
