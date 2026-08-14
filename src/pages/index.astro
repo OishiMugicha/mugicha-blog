@@ -1,17 +1,65 @@
----
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>OishiMugicha</title>
+  </head>
 
----
+  <body>
+    <main>
+      <h1>OishiMugicha</h1>
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+      <p>
+        小さなプログラムや実験を展示する場所です。
+      </p>
+
+      <section>
+        <h2>Projects</h2>
+
+        <article>
+          <h3>Just a Counter</h3>
+          <p>
+            ボタンを押すと数字が1ずつ増える、ただのカウンターです。
+          </p>
+
+          <a href="https://OishiMugicha.github.io/just-a-counter/">
+            Demo
+          </a>
+
+          <a href="https://github.com/OishiMugicha/just-a-counter">
+            GitHub
+          </a>
+        </article>
+      </section>
+    </main>
+  </body>
 </html>
+
+<style>
+  body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    line-height: 1.7;
+  }
+
+  main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  article {
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+  }
+
+  a {
+    margin-right: 1rem;
+  }
+</style>
