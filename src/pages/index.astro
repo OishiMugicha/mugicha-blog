@@ -1,83 +1,62 @@
-<!doctype html>
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>OishiMugicha</title>
-  </head>
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
 
-  <body>
-    <main>
-      <h1>OishiMugicha</h1>
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+const getPostHref = (id: string) => `${baseUrl}/blog/${id}/`;
+---
 
-      <p>
-        小さなプログラムや実験を展示する場所です。
-      </p>
+<BaseLayout
+  title="OishiMugicha"
+  description="小さなプログラムや実験を展示する個人ブログです。"
+>
+  <main>
+    <h1>OishiMugicha</h1>
 
-      <section>
-        <h2>Projects</h2>
+    <p>
+      小さなプログラムや実験を展示する場所です。
+    </p>
 
-        <article>
-          <h3>Just a Counter</h3>
-          <p>
-            ボタンを押すと数字が1ずつ増える、ただのカウンターです。
-          </p>
+    <section>
+      <h2>Projects</h2>
 
-          <a href="https://OishiMugicha.github.io/just-a-counter/">
-            Demo
-          </a>
+      <article>
+        <h3>Just a Counter</h3>
+        <p>
+          ボタンを押すと数字が1ずつ増える、ただのカウンターです。
+        </p>
 
-          <a href="https://github.com/OishiMugicha/just-a-counter">
-            GitHub
-          </a>
-        </article>
-      </section>
+        <a href="https://OishiMugicha.github.io/just-a-counter/">
+          Demo
+        </a>
 
-      <section>
-        <h2>Blog</h2>
+        <a href="https://github.com/OishiMugicha/just-a-counter">
+          GitHub
+        </a>
+      </article>
+    </section>
 
-        <article>
-          <h3>
-            <a href="/mugicha-blog/blog/first-post/">
-              ブログをはじめました
-            </a>
-          </h3>
+    <section>
+      <h2>Blog</h2>
 
-          <p>
-            このブログについて、制作の過程や今後書いていきたいこと。
-          </p>
-        </article>
-
+      {posts.map((post) => (
         <article>
           <h3>
-            <a href="/mugicha-blog/blog/search-algorithms/">
-              BFS・DFS・A*は「優先度」の違いとして見られる
-            </a>
+            <a href={getPostHref(post.id)}>{post.data.title}</a>
           </h3>
 
-          <p>
-            BFS・DFS・A*などのグラフ探索アルゴリズムが、プライオリティ関数の違いとして統一的に記述できる。
-          </p>
+          <p>{post.data.description}</p>
         </article>
-
-        <article>
-          <h3>
-            <a href="/mugicha-blog/blog/generative-ai/">
-              生成AIって単語ちょっとややこしくないって話
-            </a>
-          </h3>
-
-          <p>
-            「生成AI」と「生成モデル」の違いについて。
-          </p>
-        </article>
-      </section>
-    </main>
-  </body>
-</html>
+      ))}
+    </section>
+  </main>
+</BaseLayout>
 
 <style>
-  body {
+  :global(body) {
     margin: 0;
     font-family: system-ui, sans-serif;
     line-height: 1.7;

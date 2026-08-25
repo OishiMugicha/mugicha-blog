@@ -1,18 +1,20 @@
 ---
 import 'katex/dist/katex.min.css';
+import BaseLayout from './BaseLayout.astro';
 
-const { frontmatter } = Astro.props;
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
 ---
 
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>{frontmatter.title}</title>
-  </head>
-  <body>
-    <main>
+<BaseLayout title={title} description={description}>
+  <main>
+    <article>
+      <h1>{title}</h1>
       <slot />
-    </main>
-  </body>
-</html>
+    </article>
+  </main>
+</BaseLayout>
