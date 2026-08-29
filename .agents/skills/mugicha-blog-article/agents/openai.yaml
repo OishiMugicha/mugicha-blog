@@ -1,0 +1,4 @@
+interface:
+  display_name: "ブログ記事作成"
+  short_description: "音声メモや下書きをブログ記事に整え、確認・公開まで支援します"
+  default_prompt: "$mugicha-blog-article を使って、これから話す内容を新しい記事に整えてください。"
