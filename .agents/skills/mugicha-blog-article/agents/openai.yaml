@@ -1,4 +1,4 @@
 interface:
   display_name: "ブログ記事作成"
-  short_description: "音声メモや下書きをブログ記事に整え、確認・公開まで支援します"
-  default_prompt: "$mugicha-blog-article を使って、これから話す内容を新しい記事に整えてください。"
+  short_description: "思いつくまま話した音声入力を、本人の語り口を残してブログ記事に整え、保存します"
+  default_prompt: "$mugicha-blog-article を使って、これから思いつくまま話す内容を、私の語り口を残しながら読みやすいブログ記事に整えて保存してください。"
