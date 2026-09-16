@@ -5,6 +5,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.date.getTime() - a.data.date.getTime(),
 );
+const tools = (await getCollection('tools')).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
 const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 const getPostHref = (id: string) => `${baseUrl}/blog/${id}/`;
 ---
@@ -23,50 +26,20 @@ const getPostHref = (id: string) => `${baseUrl}/blog/${id}/`;
     <section>
       <h2>Projects</h2>
 
-      <article>
-        <h3>Just a Counter</h3>
-        <p>
-          ボタンを押すと数字が1ずつ増える、ただのカウンターです。
-        </p>
+      {tools.map((tool) => (
+        <article>
+          <h3>{tool.data.title}</h3>
+          <p>{tool.data.description}</p>
 
-        <a href="https://OishiMugicha.github.io/just-a-counter/">
-          Demo
-        </a>
+          <a href={tool.data.demoUrl}>
+            Demo
+          </a>
 
-        <a href="https://github.com/OishiMugicha/just-a-counter">
-          GitHub
-        </a>
-      </article>
-
-      <article>
-        <h3>Tiny Exp</h3>
-        <p>
-          式を入力して、トークン・AST（抽象構文木）・評価結果を確認できるツールです。
-        </p>
-
-        <a href="https://oishimugicha.github.io/tiny-exp/">
-          Demo
-        </a>
-
-        <a href="https://github.com/OishiMugicha/tiny-exp">
-          GitHub
-        </a>
-      </article>
-
-      <article>
-        <h3>Tiny ML — 型推論の実験室</h3>
-        <p>
-          式を入力して、トークン・AST（抽象構文木）・推論された型・評価結果を確認できるツールです。
-        </p>
-
-        <a href="https://oishimugicha.github.io/type-inference-demo/">
-          Demo
-        </a>
-
-        <a href="https://github.com/OishiMugicha/type-inference-demo">
-          GitHub
-        </a>
-      </article>
+          <a href={tool.data.githubUrl}>
+            GitHub
+          </a>
+        </article>
+      ))}
     </section>
 
     <section>
